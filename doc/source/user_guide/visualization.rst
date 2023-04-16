@@ -52,7 +52,7 @@ The ``plot`` method on Series and DataFrame is just a simple wrapper around
    ts = ts.cumsum()
 
    @savefig series_plot_basic.png
-   ts.plot();
+   ts.plot()
 
 If the index consists of dates, it calls :meth:`gcf().autofmt_xdate() <matplotlib.figure.Figure.autofmt_xdate>`
 to try to format the x-axis nicely as per above.
@@ -70,9 +70,9 @@ On DataFrame, :meth:`~DataFrame.plot` is a convenience to plot all of the column
    df = pd.DataFrame(np.random.randn(1000, 4), index=ts.index, columns=list("ABCD"))
    df = df.cumsum()
 
-   plt.figure();
+   plt.figure()
    @savefig frame_plot_basic.png
-   df.plot();
+   df.plot()
 
 You can plot one column versus another using the ``x`` and ``y`` keywords in
 :meth:`~DataFrame.plot`:
@@ -90,7 +90,7 @@ You can plot one column versus another using the ``x`` and ``y`` keywords in
    df3["A"] = pd.Series(list(range(len(df))))
 
    @savefig df_plot_xy.png
-   df3.plot(x="A", y="B");
+   df3.plot(x="A", y="B")
 
 .. note::
 
@@ -124,10 +124,10 @@ For example, a bar plot can be created the following way:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig bar_plot_ex.png
-   df.iloc[5].plot(kind="bar");
+   df.iloc[5].plot(kind="bar")
 
 You can also create these other plots using the methods ``DataFrame.plot.<kind>`` instead of providing the ``kind`` keyword argument. This makes it easier to discover plot methods and the specific arguments they use:
 
@@ -167,11 +167,11 @@ For labeled, non-time series data, you may wish to produce a bar plot:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig bar_plot_ex.png
-   df.iloc[5].plot.bar();
-   plt.axhline(0, color="k");
+   df.iloc[5].plot.bar()
+   plt.axhline(0, color="k")
 
 Calling a DataFrame's :meth:`plot.bar() <DataFrame.plot.bar>` method produces a multiple
 bar plot:
@@ -188,7 +188,7 @@ bar plot:
    df2 = pd.DataFrame(np.random.rand(10, 4), columns=["a", "b", "c", "d"])
 
    @savefig bar_plot_multi_ex.png
-   df2.plot.bar();
+   df2.plot.bar()
 
 To produce a stacked bar plot, pass ``stacked=True``:
 
@@ -201,7 +201,7 @@ To produce a stacked bar plot, pass ``stacked=True``:
 .. ipython:: python
 
    @savefig bar_plot_stacked_ex.png
-   df2.plot.bar(stacked=True);
+   df2.plot.bar(stacked=True)
 
 To get horizontal bar plots, use the ``barh`` method:
 
@@ -214,7 +214,7 @@ To get horizontal bar plots, use the ``barh`` method:
 .. ipython:: python
 
    @savefig barh_plot_stacked_ex.png
-   df2.plot.barh(stacked=True);
+   df2.plot.barh(stacked=True)
 
 .. _visualization.hist:
 
@@ -234,10 +234,10 @@ Histograms can be drawn by using the :meth:`DataFrame.plot.hist` and :meth:`Seri
        columns=["a", "b", "c"],
    )
 
-   plt.figure();
+   plt.figure()
 
    @savefig hist_new.png
-   df4.plot.hist(alpha=0.5);
+   df4.plot.hist(alpha=0.5)
 
 
 .. ipython:: python
@@ -250,10 +250,10 @@ using the ``bins`` keyword.
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig hist_new_stacked.png
-   df4.plot.hist(stacked=True, bins=20);
+   df4.plot.hist(stacked=True, bins=20)
 
 .. ipython:: python
    :suppress:
@@ -266,10 +266,10 @@ horizontal and cumulative histograms can be drawn by
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig hist_new_kwargs.png
-   df4["a"].plot.hist(orientation="horizontal", cumulative=True);
+   df4["a"].plot.hist(orientation="horizontal", cumulative=True)
 
 .. ipython:: python
    :suppress:
@@ -284,10 +284,10 @@ The existing interface ``DataFrame.hist`` to plot histogram still can be used.
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig hist_plot_ex.png
-   df["A"].diff().hist();
+   df["A"].diff().hist()
 
 .. ipython:: python
    :suppress:
@@ -299,10 +299,10 @@ subplots:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig frame_hist_ex.png
-   df.diff().hist(color="k", alpha=0.5, bins=50);
+   df.diff().hist(color="k", alpha=0.5, bins=50)
 
 
 The ``by`` keyword can be specified to plot grouped histograms:
@@ -319,7 +319,7 @@ The ``by`` keyword can be specified to plot grouped histograms:
    data = pd.Series(np.random.randn(1000))
 
    @savefig grouped_hist.png
-   data.hist(by=np.random.randint(0, 4, 1000), figsize=(6, 4));
+   data.hist(by=np.random.randint(0, 4, 1000), figsize=(6, 4))
 
 .. ipython:: python
    :suppress:
@@ -343,7 +343,7 @@ In addition, the ``by`` keyword can also be specified in :meth:`DataFrame.plot.h
    )
 
    @savefig grouped_hist_by.png
-   data.plot.hist(by=["a", "b"], figsize=(10, 5));
+   data.plot.hist(by=["a", "b"], figsize=(10, 5))
 
 .. ipython:: python
    :suppress:
@@ -372,7 +372,7 @@ a uniform random variable on [0,1).
    df = pd.DataFrame(np.random.rand(10, 5), columns=["A", "B", "C", "D", "E"])
 
    @savefig box_plot_new.png
-   df.plot.box();
+   df.plot.box()
 
 Boxplot can be colorized by passing ``color`` keyword. You can pass a ``dict``
 whose keys are ``boxes``, ``whiskers``, ``medians`` and ``caps``.
@@ -397,7 +397,7 @@ more complicated colorization, you can get each drawn artists by passing
    }
 
    @savefig box_new_colorize.png
-   df.plot.box(color=color, sym="r+");
+   df.plot.box(color=color, sym="r+")
 
 .. ipython:: python
    :suppress:
@@ -411,7 +411,7 @@ For example, horizontal and custom-positioned boxplot can be drawn by
 .. ipython:: python
 
    @savefig box_new_kwargs.png
-   df.plot.box(vert=False, positions=[1, 4, 5, 6, 8]);
+   df.plot.box(vert=False, positions=[1, 4, 5, 6, 8])
 
 
 See the :meth:`boxplot <matplotlib.axes.Axes.boxplot>` method and the
@@ -430,7 +430,7 @@ The existing interface ``DataFrame.boxplot`` to plot boxplot still can be used.
    :okwarning:
 
    df = pd.DataFrame(np.random.rand(10, 5))
-   plt.figure();
+   plt.figure()
 
    @savefig box_plot_ex.png
    bp = df.boxplot()
@@ -450,7 +450,7 @@ groupings.  For instance,
    df = pd.DataFrame(np.random.rand(10, 2), columns=["Col1", "Col2"])
    df["X"] = pd.Series(["A", "A", "A", "A", "A", "B", "B", "B", "B", "B"])
 
-   plt.figure();
+   plt.figure()
 
    @savefig box_plot_ex2.png
    bp = df.boxplot(by="X")
@@ -471,7 +471,7 @@ columns:
    df["X"] = pd.Series(["A", "A", "A", "A", "A", "B", "B", "B", "B", "B"])
    df["Y"] = pd.Series(["A", "B", "A", "B", "A", "B", "A", "B", "A", "B"])
 
-   plt.figure();
+   plt.figure()
 
    @savefig box_plot_ex3.png
    bp = df.boxplot(column=["Col1", "Col2"], by=["X", "Y"])
@@ -497,7 +497,7 @@ You could also create groupings with :meth:`DataFrame.plot.box`, for instance:
    df = pd.DataFrame(np.random.rand(10, 3), columns=["Col1", "Col2", "Col3"])
    df["X"] = pd.Series(["A", "A", "A", "A", "A", "B", "B", "B", "B", "B"])
 
-   plt.figure();
+   plt.figure()
 
    @savefig box_plot_ex4.png
    bp = df.plot.box(column=["Col1", "Col2"], by="X")
@@ -580,7 +580,7 @@ When input data contains ``NaN``, it will be automatically filled by 0. If you w
    df = pd.DataFrame(np.random.rand(10, 4), columns=["a", "b", "c", "d"])
 
    @savefig area_plot_stacked.png
-   df.plot.area();
+   df.plot.area()
 
 To produce an unstacked plot, pass ``stacked=False``. Alpha value is set to 0.5 unless otherwise specified:
 
@@ -593,7 +593,7 @@ To produce an unstacked plot, pass ``stacked=False``. Alpha value is set to 0.5 
 .. ipython:: python
 
    @savefig area_plot_unstacked.png
-   df.plot.area(stacked=False);
+   df.plot.area(stacked=False)
 
 .. _visualization.scatter:
 
@@ -619,7 +619,7 @@ These can be specified by the ``x`` and ``y`` keywords.
    )
 
    @savefig scatter_plot.png
-   df.plot.scatter(x="a", y="b");
+   df.plot.scatter(x="a", y="b")
 
 To plot multiple column groups in a single axes, repeat ``plot`` method specifying target ``ax``.
 It is recommended to specify ``color`` and ``label`` keywords to distinguish each groups.
@@ -629,7 +629,7 @@ It is recommended to specify ``color`` and ``label`` keywords to distinguish eac
 
    ax = df.plot.scatter(x="a", y="b", color="DarkBlue", label="Group 1")
    @savefig scatter_plot_repeated.png
-   df.plot.scatter(x="c", y="d", color="DarkGreen", label="Group 2", ax=ax);
+   df.plot.scatter(x="c", y="d", color="DarkGreen", label="Group 2", ax=ax)
 
 .. ipython:: python
    :suppress:
@@ -642,7 +642,7 @@ each point:
 .. ipython:: python
 
    @savefig scatter_plot_colored.png
-   df.plot.scatter(x="a", y="b", c="c", s=50);
+   df.plot.scatter(x="a", y="b", c="c", s=50)
 
 
 .. ipython:: python
@@ -657,7 +657,7 @@ If a categorical column is passed to ``c``, then a discrete colorbar will be pro
 .. ipython:: python
 
    @savefig scatter_plot_categorical.png
-   df.plot.scatter(x="a", y="b", c="species", cmap="viridis", s=50);
+   df.plot.scatter(x="a", y="b", c="species", cmap="viridis", s=50)
 
 
 .. ipython:: python
@@ -672,7 +672,7 @@ bubble chart using a column of the ``DataFrame`` as the bubble size.
 .. ipython:: python
 
    @savefig scatter_plot_bubble.png
-   df.plot.scatter(x="a", y="b", s=df["c"] * 200);
+   df.plot.scatter(x="a", y="b", s=df["c"] * 200)
 
 .. ipython:: python
    :suppress:
@@ -703,10 +703,10 @@ too dense to plot each point individually.
    df["b"] = df["b"] + np.arange(1000)
 
    @savefig hexbin_plot.png
-   df.plot.hexbin(x="a", y="b", gridsize=25);
+   df.plot.hexbin(x="a", y="b", gridsize=25)
 
 
-A useful keyword argument is ``gridsize``; it controls the number of hexagons
+A useful keyword argument is ``gridsize`` it controls the number of hexagons
 in the x-direction, and defaults to 100. A larger ``gridsize`` means more, smaller
 bins.
 
@@ -732,7 +732,7 @@ given by column ``z``. The bins are aggregated with NumPy's ``max`` function.
    df["z"] = np.random.uniform(0, 3, 1000)
 
    @savefig hexbin_plot_agg.png
-   df.plot.hexbin(x="a", y="b", C="z", reduce_C_function=np.max, gridsize=25);
+   df.plot.hexbin(x="a", y="b", C="z", reduce_C_function=np.max, gridsize=25)
 
 .. ipython:: python
    :suppress:
@@ -763,7 +763,7 @@ A ``ValueError`` will be raised if there are any negative values in your data.
    series = pd.Series(3 * np.random.rand(4), index=["a", "b", "c", "d"], name="series")
 
    @savefig series_pie_plot.png
-   series.plot.pie(figsize=(6, 6));
+   series.plot.pie(figsize=(6, 6))
 
 .. ipython:: python
    :suppress:
@@ -779,7 +779,7 @@ Note that pie plot with :class:`DataFrame` requires that you either specify a
 target column by the ``y`` argument or ``subplots=True``. When ``y`` is
 specified, pie plot of selected column will be drawn. If ``subplots=True`` is
 specified, pie plots for each column are drawn as subplots. A legend will be
-drawn in each pie plots by default; specify ``legend=False`` to hide it.
+drawn in each pie plots by default specify ``legend=False`` to hide it.
 
 .. ipython:: python
    :suppress:
@@ -794,7 +794,7 @@ drawn in each pie plots by default; specify ``legend=False`` to hide it.
    )
 
    @savefig df_pie_plot.png
-   df.plot.pie(subplots=True, figsize=(8, 4));
+   df.plot.pie(subplots=True, figsize=(8, 4))
 
 .. ipython:: python
    :suppress:
@@ -827,7 +827,7 @@ Also, other keywords supported by :func:`matplotlib.pyplot.pie` can be used.
        autopct="%.2f",
        fontsize=20,
        figsize=(6, 6),
-   );
+   )
 
 If you pass values whose sum total is less than 1.0 they will be rescaled so that they sum to 1.
 
@@ -843,7 +843,7 @@ If you pass values whose sum total is less than 1.0 they will be rescaled so tha
    series = pd.Series([0.1] * 4, index=["a", "b", "c", "d"], name="series2")
 
    @savefig series_pie_plot_semi.png
-   series.plot.pie(figsize=(6, 6));
+   series.plot.pie(figsize=(6, 6))
 
 See the `matplotlib pie documentation <https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.pie.html>`__ for more.
 
@@ -918,7 +918,7 @@ You can create a scatter plot matrix using the
    df = pd.DataFrame(np.random.randn(1000, 4), columns=["a", "b", "c", "d"])
 
    @savefig scatter_matrix_kde.png
-   scatter_matrix(df, alpha=0.2, figsize=(6, 6), diagonal="kde");
+   scatter_matrix(df, alpha=0.2, figsize=(6, 6), diagonal="kde")
 
 .. ipython:: python
    :suppress:
@@ -943,7 +943,7 @@ You can create density plots using the :meth:`Series.plot.kde` and :meth:`DataFr
    ser = pd.Series(np.random.randn(1000))
 
    @savefig kde_plot.png
-   ser.plot.kde();
+   ser.plot.kde()
 
 .. ipython:: python
    :suppress:
@@ -970,10 +970,10 @@ of the same class will usually be closer together and form larger structures.
 
    data = pd.read_csv("data/iris.data")
 
-   plt.figure();
+   plt.figure()
 
    @savefig andrews_curves.png
-   andrews_curves(data, "Name");
+   andrews_curves(data, "Name")
 
 .. _visualization.parallel_coordinates:
 
@@ -994,10 +994,10 @@ represents one data point. Points that tend to cluster will appear closer togeth
 
    data = pd.read_csv("data/iris.data")
 
-   plt.figure();
+   plt.figure()
 
    @savefig parallel_coordinates.png
-   parallel_coordinates(data, "Name");
+   parallel_coordinates(data, "Name")
 
 .. ipython:: python
    :suppress:
@@ -1024,13 +1024,13 @@ be passed, and when ``lag=1`` the plot is essentially ``data[:-1]`` vs.
 
    from pandas.plotting import lag_plot
 
-   plt.figure();
+   plt.figure()
 
    spacing = np.linspace(-99 * np.pi, 99 * np.pi, num=1000)
    data = pd.Series(0.1 * np.random.rand(1000) + 0.9 * np.sin(spacing))
 
    @savefig lag_plot.png
-   lag_plot(data);
+   lag_plot(data)
 
 .. ipython:: python
    :suppress:
@@ -1061,13 +1061,13 @@ autocorrelation plots.
 
    from pandas.plotting import autocorrelation_plot
 
-   plt.figure();
+   plt.figure()
 
    spacing = np.linspace(-9 * np.pi, 9 * np.pi, num=1000)
    data = pd.Series(0.7 * np.random.rand(1000) + 0.3 * np.sin(spacing))
 
    @savefig autocorrelation_plot.png
-   autocorrelation_plot(data);
+   autocorrelation_plot(data)
 
 .. ipython:: python
    :suppress:
@@ -1097,7 +1097,7 @@ are what constitutes the bootstrap plot.
    data = pd.Series(np.random.rand(1000))
 
    @savefig bootstrap_plot.png
-   bootstrap_plot(data, size=50, samples=500, color="grey");
+   bootstrap_plot(data, size=50, samples=500, color="grey")
 
 .. ipython:: python
    :suppress:
@@ -1130,10 +1130,10 @@ for more information.
 
    data = pd.read_csv("data/iris.data")
 
-   plt.figure();
+   plt.figure()
 
    @savefig radviz.png
-   radviz(data, "Name");
+   radviz(data, "Name")
 
 .. ipython:: python
    :suppress:
@@ -1165,9 +1165,9 @@ layout and formatting of the returned plot:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
    @savefig series_plot_basic2.png
-   ts.plot(style="k--", label="Series");
+   ts.plot(style="k--", label="Series")
 
 .. ipython:: python
    :suppress:
@@ -1198,7 +1198,7 @@ shown by default.
    df = df.cumsum()
 
    @savefig frame_plot_basic_noleg.png
-   df.plot(legend=False);
+   df.plot(legend=False)
 
 .. ipython:: python
    :suppress:
@@ -1218,14 +1218,14 @@ it empty for ylabel.
 .. ipython:: python
    :suppress:
 
-   plt.figure();
+   plt.figure()
 
 .. ipython:: python
 
-   df.plot();
+   df.plot()
 
    @savefig plot_xlabel_ylabel.png
-   df.plot(xlabel="new x", ylabel="new y");
+   df.plot(xlabel="new x", ylabel="new y")
 
 .. ipython:: python
    :suppress:
@@ -1250,7 +1250,7 @@ You may pass ``logy`` to get a log-scale Y axis.
    ts = np.exp(ts.cumsum())
 
    @savefig series_plot_logy.png
-   ts.plot(logy=True);
+   ts.plot(logy=True)
 
 .. ipython:: python
    :suppress:
@@ -1271,10 +1271,10 @@ To plot data on a secondary y-axis, use the ``secondary_y`` keyword:
 
 .. ipython:: python
 
-   df["A"].plot();
+   df["A"].plot()
 
    @savefig series_plot_secondary_y.png
-   df["B"].plot(secondary_y=True, style="g");
+   df["B"].plot(secondary_y=True, style="g")
 
 .. ipython:: python
    :suppress:
@@ -1286,11 +1286,11 @@ keyword:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
    ax = df.plot(secondary_y=["A", "B"])
-   ax.set_ylabel("CD scale");
+   ax.set_ylabel("CD scale")
    @savefig frame_plot_secondary_y.png
-   ax.right_ax.set_ylabel("AB scale");
+   ax.right_ax.set_ylabel("AB scale")
 
 .. ipython:: python
    :suppress:
@@ -1303,10 +1303,10 @@ with "(right)" in the legend. To turn off the automatic marking, use the
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig frame_plot_secondary_y_no_right.png
-   df.plot(secondary_y=["A", "B"], mark_right=False);
+   df.plot(secondary_y=["A", "B"], mark_right=False)
 
 .. ipython:: python
    :suppress:
@@ -1338,10 +1338,10 @@ Here is the default behavior, notice how the x-axis tick labeling is performed:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig ser_plot_suppress.png
-   df["A"].plot();
+   df["A"].plot()
 
 .. ipython:: python
    :suppress:
@@ -1352,10 +1352,10 @@ Using the ``x_compat`` parameter, you can suppress this behavior:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig ser_plot_suppress_parm.png
-   df["A"].plot(x_compat=True);
+   df["A"].plot(x_compat=True)
 
 .. ipython:: python
    :suppress:
@@ -1367,7 +1367,7 @@ in ``pandas.plotting.plot_params`` can be used in a ``with`` statement:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig ser_plot_suppress_context.png
    with pd.plotting.plot_params.use("x_compat", True):
@@ -1399,7 +1399,7 @@ with the ``subplots`` keyword:
 .. ipython:: python
 
    @savefig frame_plot_subplots.png
-   df.plot(subplots=True, figsize=(6, 6));
+   df.plot(subplots=True, figsize=(6, 6))
 
 .. ipython:: python
    :suppress:
@@ -1422,7 +1422,7 @@ or columns needed, given the other.
 .. ipython:: python
 
    @savefig frame_plot_subplots_layout.png
-   df.plot(subplots=True, layout=(2, 3), figsize=(6, 6), sharex=False);
+   df.plot(subplots=True, layout=(2, 3), figsize=(6, 6), sharex=False)
 
 .. ipython:: python
    :suppress:
@@ -1433,7 +1433,7 @@ The above example is identical to using:
 
 .. ipython:: python
 
-   df.plot(subplots=True, layout=(2, -1), figsize=(6, 6), sharex=False);
+   df.plot(subplots=True, layout=(2, -1), figsize=(6, 6), sharex=False)
 
 .. ipython:: python
    :suppress:
@@ -1458,9 +1458,9 @@ otherwise you will see a warning.
    target1 = [axes[0][0], axes[1][1], axes[2][2], axes[3][3]]
    target2 = [axes[3][0], axes[2][1], axes[1][2], axes[0][3]]
 
-   df.plot(subplots=True, ax=target1, legend=False, sharex=False, sharey=False);
+   df.plot(subplots=True, ax=target1, legend=False, sharex=False, sharey=False)
    @savefig frame_plot_subplots_multi_ax.png
-   (-df).plot(subplots=True, ax=target2, legend=False, sharex=False, sharey=False);
+   (-df).plot(subplots=True, ax=target2, legend=False, sharex=False, sharey=False)
 
 .. ipython:: python
    :suppress:
@@ -1488,15 +1488,15 @@ Another option is passing an ``ax`` argument to :meth:`Series.plot` to plot on a
 
    fig, axes = plt.subplots(nrows=2, ncols=2)
    plt.subplots_adjust(wspace=0.2, hspace=0.5)
-   df["A"].plot(ax=axes[0, 0]);
-   axes[0, 0].set_title("A");
-   df["B"].plot(ax=axes[0, 1]);
-   axes[0, 1].set_title("B");
-   df["C"].plot(ax=axes[1, 0]);
-   axes[1, 0].set_title("C");
-   df["D"].plot(ax=axes[1, 1]);
+   df["A"].plot(ax=axes[0, 0])
+   axes[0, 0].set_title("A")
+   df["B"].plot(ax=axes[0, 1])
+   axes[0, 1].set_title("B")
+   df["C"].plot(ax=axes[1, 0])
+   axes[1, 0].set_title("C")
+   df["D"].plot(ax=axes[1, 1])
    @savefig series_plot_multi.png
-   axes[1, 1].set_title("D");
+   axes[1, 1].set_title("D")
 
 .. ipython:: python
    :suppress:
@@ -1548,7 +1548,7 @@ Here is an example of one way to easily plot group means with standard deviation
    # Plot
    fig, ax = plt.subplots()
    @savefig errorbar_example.png
-   means.plot.bar(yerr=errors, ax=ax, capsize=4, rot=0);
+   means.plot.bar(yerr=errors, ax=ax, capsize=4, rot=0)
 
 .. ipython:: python
    :suppress:
@@ -1570,7 +1570,7 @@ Here is an example of one way to plot the min/max range using asymmetrical error
    # Plot
    fig, ax = plt.subplots()
    @savefig errorbar_asymmetrical_example.png
-   means.plot.bar(yerr=errors, ax=ax, capsize=4, rot=0);
+   means.plot.bar(yerr=errors, ax=ax, capsize=4, rot=0)
 
 .. ipython:: python
    :suppress:
@@ -1596,7 +1596,7 @@ Plotting with matplotlib table is now supported in  :meth:`DataFrame.plot` and :
    ax.xaxis.tick_top()  # Display x-axis ticks on top.
 
    @savefig line_plot_table_true.png
-   df.plot(table=True, ax=ax);
+   df.plot(table=True, ax=ax)
 
 .. ipython:: python
    :suppress:
@@ -1614,7 +1614,7 @@ as seen in the example below.
    ax.xaxis.tick_top()  # Display x-axis ticks on top.
 
    @savefig line_plot_table_data.png
-   df.plot(table=np.round(df.T, 2), ax=ax);
+   df.plot(table=np.round(df.T, 2), ax=ax)
 
 .. ipython:: python
    :suppress:
@@ -1632,10 +1632,10 @@ matplotlib `table <https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axe
 
    fig, ax = plt.subplots(1, 1)
 
-   table(ax, np.round(df.describe(), 2), loc="upper right", colWidths=[0.2, 0.2, 0.2]);
+   table(ax, np.round(df.describe(), 2), loc="upper right", colWidths=[0.2, 0.2, 0.2])
 
    @savefig line_plot_table_describe.png
-   df.plot(ax=ax, ylim=(0, 2), legend=None);
+   df.plot(ax=ax, ylim=(0, 2), legend=None)
 
 .. ipython:: python
    :suppress:
@@ -1674,10 +1674,10 @@ To use the cubehelix colormap, we can pass ``colormap='cubehelix'``.
    df = pd.DataFrame(np.random.randn(1000, 10), index=ts.index)
    df = df.cumsum()
 
-   plt.figure();
+   plt.figure()
 
    @savefig cubehelix.png
-   df.plot(colormap="cubehelix");
+   df.plot(colormap="cubehelix")
 
 .. ipython:: python
    :suppress:
@@ -1690,10 +1690,10 @@ Alternatively, we can pass the colormap itself:
 
    from matplotlib import cm
 
-   plt.figure();
+   plt.figure()
 
    @savefig cubehelix_cm.png
-   df.plot(colormap=cm.cubehelix);
+   df.plot(colormap=cm.cubehelix)
 
 .. ipython:: python
    :suppress:
@@ -1712,10 +1712,10 @@ Colormaps can also be used other plot types, like bar charts:
    dd = pd.DataFrame(np.random.randn(10, 10)).applymap(abs)
    dd = dd.cumsum()
 
-   plt.figure();
+   plt.figure()
 
    @savefig greens.png
-   dd.plot.bar(colormap="Greens");
+   dd.plot.bar(colormap="Greens")
 
 .. ipython:: python
    :suppress:
@@ -1726,10 +1726,10 @@ Parallel coordinates charts:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig parallel_gist_rainbow.png
-   parallel_coordinates(data, "Name", colormap="gist_rainbow");
+   parallel_coordinates(data, "Name", colormap="gist_rainbow")
 
 .. ipython:: python
    :suppress:
@@ -1740,10 +1740,10 @@ Andrews curves charts:
 
 .. ipython:: python
 
-   plt.figure();
+   plt.figure()
 
    @savefig andrews_curve_winter.png
-   andrews_curves(data, "Name", colormap="winter");
+   andrews_curves(data, "Name", colormap="winter")
 
 .. ipython:: python
    :suppress:
@@ -1779,12 +1779,12 @@ when plotting a large number of points.
    ma = price.rolling(20).mean()
    mstd = price.rolling(20).std()
 
-   plt.figure();
+   plt.figure()
 
-   plt.plot(price.index, price, "k");
-   plt.plot(ma.index, ma, "b");
+   plt.plot(price.index, price, "k")
+   plt.plot(ma.index, ma, "b")
    @savefig bollinger.png
-   plt.fill_between(mstd.index, ma - 2 * mstd, ma + 2 * mstd, color="b", alpha=0.2);
+   plt.fill_between(mstd.index, ma - 2 * mstd, ma + 2 * mstd, color="b", alpha=0.2)
 
 .. ipython:: python
    :suppress:
